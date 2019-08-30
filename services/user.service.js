@@ -8,6 +8,16 @@ exports.signinUser = async function(userName, socketInfo) {
   return response;
 };
 
+exports.autoSigninUser = async function(userId, socketInfo) {
+  var user = await dbService.findById(userId);
+  if (user) {
+    user = await dbService.changeSocket(user, socketInfo);
+  }
+
+  var response = { user: user };
+  return response;
+};
+
 exports.signoutUser = async function(userId) {
   var user = await dbService.findById(userId);
   if (user) {

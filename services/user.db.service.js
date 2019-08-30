@@ -31,3 +31,9 @@ exports.changeStatus = async function(model, status) {
   var response = await model.save();
   return response;
 };
+
+exports.changeSocket = async function(model, socket) {
+  model.socket = JSON.stringify(socket);
+  var response = await model.save();
+  return response;
+};

@@ -6,7 +6,8 @@ exports.createRoom = async function(userId) {
   console.log(userId);
   if (user) {
     var room = await dbService.insert();
-    var savedRoom = await dbService.addUser(room, user);
+    var savedRoom = await dbService.addUser(room, user._id);
+    var user = await userDBService.addRoom(user, savedRoom._id);
     var response = { roomId: savedRoom._id };
 
     return response;
@@ -21,8 +22,8 @@ exports.addUser = async function(roomId, userId) {
   if (room) {
     var user = await userDBService.findById(userId);
     if (user) {
-      var savedRoom = await dbService.addUser(room, user);
-      var savedUser = await userDBService.addRoom(user, room);
+      var savedRoom = await dbService.addUser(room, user._id);
+      var savedUser = await userDBService.addRoom(user, savedRoom._id);
     }
   }
   var response = { roomId: roomId };
