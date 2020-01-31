@@ -3,6 +3,8 @@
 
 This project is a backend written with nodejs and mongodb(with mongoose) for vue client. This project was developed with Vue to manage chat rooms. Websocket was used for communication. It was developed as a simple example for Socket, Vue and Vuex. You can make it look more beautiful or add new features.
 
+**client** : https://github.com/gurkanakdeniz/picky-client
+
 ## Preview
 
 ###### architecture simple view :
